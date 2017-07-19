@@ -29,7 +29,6 @@ class VuelosController extends Controller
     public function find(FindVuelosRequest $request,Client $client)
     {
         #$vuelo = Vuelo::create($request->only('inp1','inp2','inp3'));
-        dd($request->origen);
         $origen=$request->get('origen');
         $destino=$request->get('destino');
         $fec_sal=$request->get('fec_sal');
