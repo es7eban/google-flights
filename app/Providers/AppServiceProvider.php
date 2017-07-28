@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('GuzzleHttp\Client',function(){
             return new Client([
                 'base_uri'=>'https://www.googleapis.com/qpxExpress/v1/trips/',
-                #'headers' => [ 'Content-Type' => 'application/json' ]
+                'headers' => ['Content-Type' => 'application/json']
             ]);
         });
     }

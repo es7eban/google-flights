@@ -26,7 +26,24 @@ class FindVuelosRequest extends FormRequest
     {
         return [
             'origen'=>'required',
-            'destino'=>'required'
+            'destino'=>'required',
+            'fec_ini'=>'required',
+            'fec_fin'=>'required'
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'origen.required' => 'Debe ingresar un aeropuerdo de origen',
+            'destino.required' => 'Debe ingresar un aeropuerdo de destino',
+            'fec_ini.required' => 'Debe indicar una "fecha inicio"',
+            'fec_fin.required' => 'Debe indicar una "fecha final" para la busqueda'
         ];
     }
 }

@@ -17,14 +17,15 @@ class CreateVuelosTable extends Migration
             $table->increments('id');
             $table->integer('viaje_id')->unsigned()->comment('Clave foranea tabla viajes');
             $table->time('duracion')->comment('Duración del vuelo');
-            $table->char('origen',3)->comment('Aeropuerto de origen');
-            $table->char('destino',3)->comment('Aeropuerto de destino');
+            $table->char('origen',3)->comment('Clave foranea tabla aeropuertos, aeropuerto de origen ');
+            $table->char('destino',3)->comment('Clave foranea tabla aeropuertos, aeropuerto de destino');
             $table->dateTime('fec_hora_sal')->comment('Fecha y hora de salida del vuelo');
             $table->dateTime('fec_hora_lle')->comment('Fecha y hora de llegada del vuelo');
             $table->time('con_duracion')->comment('Duración de la conexión');
             $table->string('cabina',20)->comment('Tipo de cabina');
             $table->string('comida',50)->comment('Tipo de comida a bordo');
             $table->string('carrier_id',10)->comment('Operador del vuelo');
+            $table->softDeletes();
             $table->timestamps();#created_at updated_at
 
             Schema::disableForeignKeyConstraints();

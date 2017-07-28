@@ -20,6 +20,7 @@ class CreateViajesTable extends Migration
             $table->char('destino',3)->comment('Aeropueto de destino');
             $table->integer('val_tot')->comment('Costo total de ::momento en pesos CLP::');
             $table->tinyInteger('cant_con')->comment('Cantidad de vuelos de conexión');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -31,6 +32,7 @@ class CreateViajesTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('viajes');
     }
 }

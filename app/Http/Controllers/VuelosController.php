@@ -18,6 +18,7 @@ class VuelosController extends Controller
     {
         #$vuelos = Vuelo::all();
         $vuelos = Vuelo::orderBy('id','desc')->paginate(10);
+
         return view('vuelos/index')->with(['vuelos'=>$vuelos]);
     }
 
@@ -31,28 +32,36 @@ class VuelosController extends Controller
         #$vuelo = Vuelo::create($request->only('inp1','inp2','inp3'));
         $origen=$request->get('origen');
         $destino=$request->get('destino');
-        $fec_sal=$request->get('fec_sal');
-        $fec_reg=$request->get('fec_reg');
-        #$fecha='2017-07-20';
-        $body=array(
-            'request'=>array(
-                'slice'=>array(
-                    array(
-                        'origin'=>$origen,'destination'=>$destino,'date'=>$fec_sal
-                    )),
-                'passengers'=>array(
-                    'adultCount'=>1,'infantInLapCount'=>'0','infantInSeatCount'=>'0','childCount'=>'0','seniorCount'=>'0'
-                ),
-                'solutions'=>'50',
-                'refundable'=>'false'
-            ));
-        $response = $client->post('search',[
-            'key'=>'AIzaSyDl25-vy1Jt0LrfJap7KDSkt-ylO63vys0',
+        $fec_ini=$request->get('fec_ini');
+        $fec_fin=$request->get('fec_fin');
+
+        $body = $this->returnBodyReq();
+        $slice = [['origin'=>$origen,'destination'=>$destino,'date'=>$fec_ini]];
+        $body['request']['slice']=$slice;
+
+        $response = $client->post('search?key=AIzaSyDl25-vy1Jt0LrfJap7KDSkt-ylO63vys0',[
             'json'=>$body
         ]);
-        dd($response);
-        #dd($request->all());
+
+        dd($response->getBody()->getContents());
     }
+
+    private function returnBodyReq()
+    {
+        return[
+            'request'=>[
+                'slice'=>[
+                    #['origin'=>'','destination'=>'','date'=>'']
+                ],
+                'passengers'=>[
+                    'adultCount'=>1,'infantInLapCount'=>0,'infantInSeatCount'=>0,'childCount'=>0,'seniorCount'=>0
+                ],
+                'solutions'=>'50',
+                'refundable'=>'false'
+            ]
+        ];
+    }
+
 
     /**
      * Show the form for creating a new resource.
