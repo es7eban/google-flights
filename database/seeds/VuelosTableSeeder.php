@@ -12,6 +12,6 @@ class VuelosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Vuelo::class,40)->create();
+        factory(Vuelo::class,9)->create();
     }
 }

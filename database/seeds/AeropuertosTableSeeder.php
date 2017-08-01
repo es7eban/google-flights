@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Viaje;
+use App\Aeropuerto;
 
-class ViajesTableSeeder extends Seeder
+class AeropuertosTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class ViajesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Viaje::class,40)->create();
+        factory(Aeropuerto::class,9)->create();
     }
 }
