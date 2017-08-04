@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::name('vuelos_path')->get('/vuelos','VuelosController@index');
-Route::name('vuelos_formFind_path')->get('/vuelos/formfind','VuelosController@formFind');
-Route::name('vuelos_find_path')->post('/vuelos/find','VuelosController@find');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::name('vuelos_formFind_path')->get('/','VueloController@formFind');
+//Route::name('vuelos_formFind_path')->get('/vuelos/formfind','VueloController@formFind');
+
+Route::name('vuelos_por_viaje')->get('/vuelos/{viaje_id}','VueloController@findVuelosPorViaje');
+
+Route::name('vuelos_find_path')->post('/vuelos/find','VueloController@find');
+
+Route::name('viajes_path')->get('/viajes','ViajeController@index');

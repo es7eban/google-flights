@@ -16,20 +16,17 @@
     <title>Document</title>
 </head>
 <body>
-<script>
-    $().ready(function(){
-        var options={
-            format: 'yyyy-mm-dd',
-            startDate: '0',
-            //maxDate: 0,
-            //container: container,
-            todayHighlight: true,
-            autoclose: true
-        };
-        $('.date').datepicker(options);
-    });
-</script>
 <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="{{ url('/') }}" class="navbar-brand">Google flight</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="{{ route('viajes_path') }}">Viajes</a></li>
+            </ul>
+        </div>
+    </nav>
     @yield('content')
 </div>
 </body>

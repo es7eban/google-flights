@@ -22,4 +22,17 @@
             <button type="submit" class="btn">consultar</button>
         </div>
     </form>
+    <script>
+        $().ready(function(){
+            var options={
+                format: 'yyyy-mm-dd',
+                startDate: '0',
+                //maxDate: 0,
+                //container: container,
+                todayHighlight: true,
+                autoclose: true
+            };
+            $('.date').datepicker(options);
+        });
+    </script>
 @endsection

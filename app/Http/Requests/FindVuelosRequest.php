@@ -28,7 +28,7 @@ class FindVuelosRequest extends FormRequest
             'origen'=>'required',
             'destino'=>'required',
             'fec_ini'=>'required',
-            'fec_fin'=>'required'
+            #'fec_fin'=>'required'
         ];
     }
 
